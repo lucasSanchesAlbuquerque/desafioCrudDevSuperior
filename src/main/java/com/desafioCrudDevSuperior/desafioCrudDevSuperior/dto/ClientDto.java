@@ -18,13 +18,16 @@ public class ClientDto {
     private LocalDate birthDate;
     private Integer children;
 
-    public ClientDto(Long id, String name, String cpf, Double income, LocalDate birthDate, Integer children) {
-        this.id = id;
+    public ClientDto( String name, String cpf, Double income, LocalDate birthDate, Integer children) {
         this.name = name;
         this.cpf = cpf;
         this.income = income;
         this.birthDate = birthDate;
         this.children = children;
+    }
+
+    public ClientDto() {
+
     }
 
     public ClientDto(Client client) {
