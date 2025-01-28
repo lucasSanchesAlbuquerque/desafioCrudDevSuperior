@@ -47,7 +47,9 @@ public class ClientService {
         return new ClientDto(client);
     }
 
+    @Transactional
     public ClientDto update(Long id, ClientDto dto){
+
         try {
             Client client = repository.getReferenceById(id);
             client.setName(dto.getName());

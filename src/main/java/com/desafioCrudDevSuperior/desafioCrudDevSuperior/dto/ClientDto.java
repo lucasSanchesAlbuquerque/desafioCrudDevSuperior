@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PastOrPresent;
 
 import java.time.LocalDate;
 
@@ -12,9 +14,11 @@ import java.time.LocalDate;
 public class ClientDto {
 
     private Long id;
+    @NotBlank(message = "Nome: não pode ser vazio")
     private String name;
     private String cpf;
     private Double income;
+    @PastOrPresent(message = "Data de nascimento: não pode ser data futura")
     private LocalDate birthDate;
     private Integer children;
 

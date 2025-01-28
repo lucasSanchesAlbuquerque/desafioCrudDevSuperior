@@ -3,6 +3,7 @@ package com.desafioCrudDevSuperior.desafioCrudDevSuperior.controllers;
 import com.desafioCrudDevSuperior.desafioCrudDevSuperior.dto.ClientDto;
 import com.desafioCrudDevSuperior.desafioCrudDevSuperior.entities.Client;
 import com.desafioCrudDevSuperior.desafioCrudDevSuperior.services.ClientService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -33,7 +34,7 @@ public class ClientController {
 
 
     @PostMapping()
-    private ResponseEntity<ClientDto> insert(@RequestBody ClientDto dto){
+    private ResponseEntity<ClientDto> insert(@Valid @RequestBody ClientDto dto){
         ClientDto clientDto =  service.insert(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
@@ -43,7 +44,7 @@ public class ClientController {
     }
 
     @PutMapping(value = "/{id}")
-    private ResponseEntity<ClientDto> update(@PathVariable Long id, @RequestBody ClientDto dto){
+    private ResponseEntity<ClientDto> update(@PathVariable Long id,@Valid @RequestBody ClientDto dto){
         ClientDto clientDto = service.update(id,dto);
         return ResponseEntity.ok(clientDto);
     }
